@@ -8,6 +8,8 @@ switch (method) {
   case "GET":
     if (!id) {
       getProducts();
+    } else {
+        getProductById(id);
     }
     break;
 
@@ -28,5 +30,19 @@ async function getProducts() {
     console.log(data);
   } catch (error) {
     console.log("Error al obtener productos");
+  }
+}
+
+async function getProductById(productId) {
+  try {
+    const response = await fetch(
+      `https://fakestoreapi.com/products/${productId}`
+    );
+
+    const data = await response.json();
+
+    console.log(data);
+  } catch (error) {
+    console.log("Error al obtener producto");
   }
 }
