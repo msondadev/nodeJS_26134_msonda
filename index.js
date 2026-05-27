@@ -20,6 +20,10 @@ switch (method) {
         createProduct();
         break;
 
+    case "DELETE":
+        deleteProduct(id);
+        break;    
+
     default:
         console.log("Comando no reconocido");
 }
@@ -81,5 +85,24 @@ async function createProduct() {
 
     } catch (error) {
         console.log("Error al crear producto");
+    }
+}
+
+
+async function deleteProduct(productId) {
+    try {
+        const response = await fetch(
+            `https://fakestoreapi.com/products/${productId}`,
+        {
+            method: "DELETE"
+        }
+    );
+
+    const data = await response.json();
+
+    console.log(data);
+
+    } catch (error) {
+        console.log("Error al eliminar producto");
     }
 }
