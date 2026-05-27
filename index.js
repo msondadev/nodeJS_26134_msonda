@@ -1,5 +1,10 @@
 const method = process.argv[2];
 const endpoint = process.argv[3];
+    
+if (!method || !endpoint) {
+    console.log("Debes ingresar un método y endpoint");
+    process.exit();
+}
 
 const partes = endpoint.split("/");
 
